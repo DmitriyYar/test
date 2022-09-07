@@ -1,0 +1,32 @@
+.box {
+  display: flex;
+  width: 420px;
+  height: 240px;
+  margin-left: 100px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.box2 {
+  border-left: 1px solid #a7a5a5;
+  background-color: #f3f3f3;
+  width: 100%;
+}
+
+.message_scroll {
+  height: 85%;
+  padding: 5px 10px;
+  overflow: auto;
+}
+
+.title {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+  line-height: 35px;
+  color: darkgreen;
+  padding-left: 10px;
+}
+
+.list {
+  list-style-type: none;
+}
