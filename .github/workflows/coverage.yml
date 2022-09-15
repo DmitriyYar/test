@@ -1,18 +1,35 @@
-name: Coverage
+# This workflow will do a clean install of node dependencies, build the source code and run tests
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-on: pull_request
+name: CI Pipeline
+
+# trigger build when pushing, or when creating a pull request
+on: [push, pull_request]
 
 jobs:
-  coverage:
+  build:
+
+    # run build on latest ubuntu
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 14
-      - uses: actions/checkout@v2
-      - uses: artiomtr/jest-coverage-report-action@v2.0-rc.6
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          # github-token: ${{ secrets.GITHUB_TOKEN }}
-          threshold: 60
+    # this will check out the current branch (https://github.com/actions/checkout#Push-a-commit-using-the-built-in-token)
+    - uses: actions/checkout@v2
+    # installing Node
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        # this will use the latest Node 12 version
+        node-version: 12.x
+    # install dependencies using clean install to avoid package lock updates
+    - run: npm ci
+    # build the project if necessary
+    - run: npm run build --if-present
+    # finally run the tests
+    - run: npm run coverage
+
+    # Save coverage report in Coveralls
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
