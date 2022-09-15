@@ -84,6 +84,7 @@ module.exports = {
   moduleNameMapper: {
     '\\.(css|scss)$': 'identity-obj-proxy',
     '^src(.*)$': '<rootDir>/src$1',
+    '^components(.*)$': '<rootDir>/src/components$1',
     '^nanoid$': require.resolve('nanoid'),
   },
 
