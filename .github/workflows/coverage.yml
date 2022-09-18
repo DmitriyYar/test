@@ -12,6 +12,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: artiomtr/jest-coverage-report-action@v2.0-rc.6
         env:
-          github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
-          repository: ${{ github.repository }}
-          NODE_ENV: 'production'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # with:
+        #   github-token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+        #   repository: ${{ github.token }}
+        #   threshold: 60
