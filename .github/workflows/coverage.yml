@@ -13,5 +13,5 @@ jobs:
       - uses: artiomtr/jest-coverage-report-action@v2.0-rc.6
         with:
           github-token: ${{ secrets.MY_TOKEN }}
-          lcov-file: ./tests/coverage/lcov.info
+          lcov-file: ./coverage/lcov.info
           threshold: 60
